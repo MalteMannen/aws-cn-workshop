@@ -19,12 +19,21 @@ exec: true     # Enable running commands in your container.
 # storage:
   # readonly_fs: true       # Limit to read-only access to mounted root filesystems.
 
+count:
+  range:
+    min: 1
+    max: 5
+  queue_delay:
+    acceptable_latency: 10s
+    msg_processing_time: 1s
 
 # The events can be received from an SQS queue via the env var $COPILOT_QUEUE_URI.
 subscribe:
   topics:
     - name: requestsTopic
       service: api
+
+
 
 # Optional fields for more advanced use-cases.
 #
